@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Connection">
+	<select id="selectConnection" parameterType="con"   resultType="con">
+	 select
+     ciNo,ciName,ciUrl,ciPort,ciDatabase,ciUser,ciPwd,ciEtc,uiId, ciNo as id, ciName as text
+     from connection_info
+     where uiId=#{uiId}
+    </select>
+    <select id="selectConnectionWithCiNo" parameterType="int"   resultType="con">
+	 select
+     ciNo,ciName,ciUrl,ciPort,ciDatabase,ciUser,ciPwd,ciEtc,uiId, ciNo as id, ciName as text
+     from connection_info
+     where ciNo=#{ciNo}
+    </select>
+    <select id="selectDatabase" resultType="map">
+		show databases
+	</select>
+	<insert id="insertConnection" parameterType="con">
+	insert into
+		Connection_Info(ciName,ciUrl,ciPort,ciDatabase,ciUser,ciPwd,ciEtc,uiId)
+		values(#{ciName},#{ciUrl},#{ciPort},#{ciDatabase},#{ciUser},#{ciPwd},#{ciEtc},#{uiId})
+	</insert>
+
+	
+	
+
+</mapper>
